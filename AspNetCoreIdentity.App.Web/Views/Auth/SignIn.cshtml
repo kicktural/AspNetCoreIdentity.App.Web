@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "SignIn";
+}
+
+@model SignInViewModel
+
+@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Kullanici Kayit</h2>
+        <div asp-validation-summary="ModelOnly" class="text text-danger" role="alert">
+        </div>
+        <form asp-action="SignIn" asp-controller="Auth" asp-route-returnUrl="@Context.Request.Query["returnUrl"]" method="post">
+            <div class="mb-3">
+                <label for="Email" class="col-md-4 col-form-label w-100" asp-for="Email"></label>
+                <div class="col-md-8 w-100">
+                    <input asp-for="Email" class="form-control btn btn-outline-info w-100">
+                    <span asp-validation-for="Email" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="Password" class="col-md-4 col-form-label w-100" asp-for="Password"></label>
+                <div class="col-md-8 w-100">
+                    <input asp-for="Password" class="form-control btn btn-outline-info w-100">
+                    <span asp-validation-for="Password" class="text text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3 form-check">
+                        <input class="form-check-input" asp-for="RemamberMe">
+                        <label class="form-check-label" asp-for="RemamberMe" for="RemamberMe">Beni Hatirla</label>
+                    </div>
+                </div>
+                <div class="col-md-6">              
+                    <a class="btn btn-link float-end" asp-controller="Auth" asp-action="ForgetPassword">Sifremi unuttum</a>
+                </div>
+            </div>        
+
+            <button type="submit" class="btn btn-primary w-100">Uye giris</button>
+            
+        </form>
+        </div>
+   </div>
+
+
+

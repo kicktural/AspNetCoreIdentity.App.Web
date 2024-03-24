@@ -1,0 +1,86 @@
+﻿@model UserEditViewModel
+
+@section Scripts {
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-3">
+
+        <form method="post" asp-controller="User" asp-action="UserEdit" enctype="multipart/form-data">
+            <h2>Sifre Guncelleme</h2>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-info" role="alert">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            <div asp-validation-summary="ModelOnly" class="text text-danger" role="alert">
+            </div>
+
+
+            <div class="row mb-3">
+                <label for="UserName" class="col-md-4 col-form-label" asp-for="UserName"></label>
+                <div class="col-md-8">
+                    <input asp-for="UserName" class="form-control btn btn-outline-info">
+                    <span asp-validation-for="UserName" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="Email" class="col-md-4 col-form-label" asp-for="Email"></label>
+                <div class="col-md-8">
+                    <input asp-for="Email" class="form-control btn btn-outline-info">
+                    <span asp-validation-for="Email" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="Phone" class="col-md-4 col-form-label" asp-for="Phone"></label>
+                <div class="col-md-8">
+                    <input asp-for="Phone" class="form-control btn btn-outline-info">
+                    <span asp-validation-for="Phone" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="BrithDate" class="col-md-4 col-form-label" asp-for="BrithDate"></label>
+                <div class="col-md-8">
+                    <input asp-for="BrithDate" class="form-control btn btn-outline-info">
+                    <span asp-validation-for="BrithDate" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="City" class="col-md-4 col-form-label" asp-for="City"></label>
+                <div class="col-md-8">
+                    <input asp-for="City" class="form-control btn btn-outline-info">
+                    <span asp-validation-for="City" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="Gender" class="col-md-4 col-form-label" asp-for="Gender"></label>
+                <div class="col-md-8">
+                    <select class="form-control" asp-for="Gender" asp-items="ViewBag.gender">
+                        <option value="">Cinsiyet seciniz</option>
+                    </select> 
+                    <span asp-validation-for="Gender" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="Picture" class="col-md-4 col-form-label" asp-for="Picture"></label>
+                <div class="col-md-8">
+                      <input asp-for="Picture" type="file" class="form-control btn btn-outline-info">
+                    <span asp-validation-for="Picture" class="text text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8 offset-md-4">
+                    <button type="submit" class="btn btn-primary">Guncelle</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
